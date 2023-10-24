@@ -1,0 +1,6 @@
+# java
+.settings/
+bin/
+.classpath
+.project
+.metadata
