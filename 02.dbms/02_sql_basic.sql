@@ -1,11 +1,11 @@
--- employees���� �̸�(last_name), �޿�(salary), ����(salary*12+salary*commision+pct) ���
+-- employees 이름(last_name), 급여(salary), 연봉(salary*12+salary*commision+pct) 조회
 
-SELECT last_name AS �̸�, salary AS �޿�, salary*12+salary*nvl(commission_pct,0) AS ����
+SELECT last_name AS 이름, salary AS 급여, salary*12+salary*nvl(commission_pct,0) AS 연봉
 FROM employees;
 
 --conn tester1/1234@localhost:1521/xepdb1
 
--- SELECT�� �����ϱ�
+-- SELECT
 
 SELECT  *
 FROM    dept;
@@ -14,16 +14,16 @@ SELECT  empno
         ,ename
 FROM    emp;
 
--- ��Ī ����ϱ�
+-- 연산
 
 SELECT  ename, sal*12+sal*nvl(comm,0) AS annsal FROM emp;
 SELECT  ename, sal*12+sal*nvl(comm,0) AS "annsal" FROM emp;
 SELECT  ename, sal*12+sal*nvl(comm,0) annsal FROM emp;
 SELECT  ename, sal*12+sal*nvl(comm,0) "annsal" FROM emp;
 
--- concatenation ������
+-- concatenation 이용
 
-SELECT ename || '�� ������ ' || JOB || '�Դϴ�. ' AS ����
+SELECT 'SELECT * FROM ' || TNAME || ';';
 FROM emp;
 
 -- distinct
@@ -31,13 +31,13 @@ FROM emp;
 SELECT DISTINCT deptno
 FROM emp;
 
--- Ư�� ������ �����͸� ��ȸ
+-- to_date
 
 SELECT *
 FROM emp
 WHERE hiredate < TO_DATE('2005/01/01', 'YYYY/MM/DD');
 
--- ���� �ð�
+-- 현재 시간 출력
 
 SELECT sysdate
 FROM dual;
@@ -46,11 +46,11 @@ FROM dual;
 
 SELECT ename, deptno, JOB
 FROM emp
-WHERE deptno=10 AND JOB='����';
+WHERE deptno=10 AND JOB='과장';
 
 SELECT ename, deptno, JOB
 FROM emp
-WHERE deptno=10 OR JOB='����';
+WHERE deptno=10 OR JOB='과장';
 
 SELECT *
 FROM emp
@@ -82,7 +82,7 @@ FROM emp
 WHERE NOT sal BETWEEN 400 AND 500;
 
 
--- �ʵ忡 ������ �Ŵ� ������ �����ؾ� �� -> ���� ����
+-- 컬럼에 바로 연산자 적용은 지양 -> 성능 문제
 
 SELECT  *
 FROM    emp
