@@ -15,3 +15,4 @@
 
 - [📚 한번에 이해되는 Oracle SQL & PL/SQL](https://product.kyobobook.co.kr/detail/S000001870526)
 - [학습기록](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/02.dbms)
+- [소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/02.dbms)
