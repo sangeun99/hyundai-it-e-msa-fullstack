@@ -164,4 +164,8 @@ FROM    single_star;
 
 -- 집합 연산자 DIFFERENCE
 
-
+SELECT  name
+FROM    single_star
+MINUS
+SELECT  name
+FROM    group_star;
