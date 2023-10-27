@@ -3,7 +3,7 @@
 SELECT last_name AS 이름, salary AS 급여, salary*12+salary*nvl(commission_pct,0) AS 연봉
 FROM employees;
 
---conn tester1/1234@localhost:1521/xepdb1
+-- CONN tester1/1234@localhost:1521/xepdb1
 
 -- SELECT
 
@@ -102,3 +102,66 @@ WHERE   comm IN(80, 100, 200);
 SELECT  *
 FROM    emp
 WHERE   comm NOT IN(80, 100, 200);
+
+
+-- 10/27
+
+-- LIKE % 이용하기
+
+SELECT  ename
+FROM    emp
+WHERE   ename LIKE '%이%';
+
+SELECT  ename
+FROM    emp
+WHERE   ename LIKE '%' || '성' || '%';
+
+-- _ 이용하기
+
+SELECT  ename
+FROM    emp
+WHERE   ename LIKE '__이';
+
+-- ORDER BY 절
+
+SELECT  ename, sal
+FROM    emp
+ORDER   BY sal ASC;
+
+SELECT  empno, ename
+FROM    emp
+ORDER   BY ename;
+
+SELECT  empno, ename, hiredate
+FROM    emp
+ORDER   BY hiredate DESC;
+
+SELECT  empno, ename, hiredate
+FROM    emp
+ORDER   BY hiredate DESC, ename ASC;
+
+-- 집합 연산자 UNION
+
+SELECT  name
+FROM    group_star
+UNION ALL
+SELECT  name
+FROM    single_star;
+
+SELECT  name
+FROM    group_star
+UNION
+SELECT  name
+FROM    single_star;
+
+-- 집합 연산자 INTERSECT
+
+SELECT  name
+FROM    group_star
+INTERSECT
+SELECT  name
+FROM    single_star;
+
+-- 집합 연산자 DIFFERENCE
+
+
