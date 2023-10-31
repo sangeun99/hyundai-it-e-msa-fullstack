@@ -85,7 +85,7 @@ WHERE   e.deptno = d.deptno(+)
 - 조인할 테이블 선택 (순서 중요)
 - 테이블 별칭 지정
 - 출력할 컬럼을 선택 및 별칭 지정
-- 링크 선택을 통해 JOIN 속성 변경 능
+- 링크 선택을 통해 JOIN 속성 변경 가능
 
     ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/6e48b824-62ee-446d-b200-ad3ffe5a41b1)
 
