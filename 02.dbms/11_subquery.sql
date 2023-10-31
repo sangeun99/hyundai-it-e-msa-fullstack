@@ -104,3 +104,36 @@ FROM    dept
 WHERE   EXISTS (    SELECT  *
                     FROM    emp
                     WHERE   emp.deptno = dept.deptno );
+
+-- CTAS (서브쿼리로 CREATE TABLE 하기)
+
+CREATE  TABLE emp02
+AS
+SELECT  * FROM emp;
+
+DESC    emp02;
+DESCRIBE emp;
+
+CREATE  TABLE emp03
+AS
+SELECT  empno, ename FROM emp;
+
+CREATE  TABLE emp04
+AS
+SELECT  * 
+FROM    emp
+WHERE   deptno=10;
+
+CREATE  TABLE   emp05
+AS
+SELECT  *
+FROM    emp
+WHERE   1=0;
+
+-- 서브쿼리로 INSERT 하기 
+
+INSERT  INTO    emp05
+SELECT  * FROM emp;
+
+SELECT  * FROM emp05;
+
