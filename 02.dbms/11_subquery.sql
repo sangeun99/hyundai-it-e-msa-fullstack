@@ -137,3 +137,16 @@ SELECT  * FROM emp;
 
 SELECT  * FROM emp05;
 
+-- 서브쿼리로 DELETE 하기
+
+DELETE  FROM    emp02;
+
+INSERT  INTO    emp02
+SELECT  * FROM  emp;
+
+SELECT  * FROM  emp02;
+
+DELETE  FROM    emp02
+WHERE   deptno = (  SELECT  deptno
+                    FROM    dept
+                    WHERE   dname='영업부' );
