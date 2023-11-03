@@ -23,7 +23,7 @@ ORDER   BY deptno, job;
 - CUBE
     - deptno가 바뀔 때마다 deptno별 집계 출력
     - 모든 deptno가 출력되면 job별 집계 정보 출력
-    - job별 전체 집계 정보 출력이 ROLLUP과의 이
+    - job별 전체 집계 정보 출력이 ROLLUP과의 차이
 
 ```sql
 SELECT  deptno, GROUPING(deptno),
