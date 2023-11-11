@@ -11,7 +11,7 @@
     - name
         - 폼의 이름
     - action
-        - 태그 나용을 처리할 서버 프로그램 지정
+        - 태그 내용을 처리할 서버 프로그램 지정
     - target
         - 지정된 스크립트 파일을 다른 위치에서 열도록 함
 
@@ -23,7 +23,8 @@
 - &lt;legend>
     - &lt;fieldset>의 이름을 붙임
 
-![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/c7d996c8-99ab-4cd4-a09b-ce18859c2ec2)
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/113fed4b-ca41-44e8-838d-92296c70d7c3)
+
 
 ### 사용자 입력을 위한 input 태그
 
@@ -42,12 +43,12 @@
 - type=”number”, type=”range”
 - type=”date”, type=”month”, type=”week”
     
-    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/ab4943da-acaa-405d-8f6c-fb7513fbd181)
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/c7d996c8-99ab-4cd4-a09b-ce18859c2ec2)
     
 - type=”submit”, type=”reset”
 - type=”image”
     
-    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/d36f96c4-14f4-40ac-bc5a-261ecb895cfb)
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/ab4943da-acaa-405d-8f6c-fb7513fbd181)
     
 - type=”file”
     - 파일 첨부 폼
@@ -67,10 +68,10 @@
 - &lt;select>, &lt;option>
 - &lt;datalist>, &lt;option>
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e9e2ce04-3c8c-4e77-a34f-f06eec9d1660/496e0f9d-5cc3-43e9-a94f-e56d352b481e/Untitled.png)
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/d36f96c4-14f4-40ac-bc5a-261ecb895cfb)
     
 - &lt;button>
     - type
-        - submit: 폼을 서버로 전
+        - submit: 폼을 서버로 전달
         - reset
         - button
