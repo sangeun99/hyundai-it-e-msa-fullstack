@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    caption {
+      font-weight: 700;
+      padding: 30px;
+    }
+
+    table {
+      border-spacing: 0;
+    }
+
+    tr:first-child {      
+      padding: 10px;
+      background-color: darkgreen;
+    }
+
+    th {
+      color: white;
+    }
+
+    th:first-child {
+      color: red;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    td:first-child {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const now = new Date();
+    const year = now.getFullYear();
+    const month= now.getMonth() + 1;
+    const first_day = new Date(year, month - 1, 1);
+    const first_day_week = first_day.getDay()+1;
+    const end_day =  new Date(year, month, 0).getDate();  // 다음달 0일은 이달의 마지막 날
+
+    //document.write(`${year}년 ${month}월`);
+    //document.write(week);
+
+    document.write(`
+        <table>
+          <caption>${year}년 ${month}월</caption>
+          <tr>
+            <th>일</th>
+            <th>월</th>
+            <th>화</th>
+            <th>수</th>
+            <th>목</th>
+            <th>금</th>
+            <th>토</th>
+          </tr>
+          <tr>          
+    `);
+
+    for(let d=1; d<first_day_week; d++) {
+      document.write(`<td></td>`);
+    }
+
+    for(let d=1, w=first_day_week; d<=end_day; d++, w++) {
+      document.write(`<td>${d}</td>`);
+      if (w % 7 === 0) document.write('</tr><tr>');
+    }
+    document.write('</table>');
+  </script>
+</body>
+</html>

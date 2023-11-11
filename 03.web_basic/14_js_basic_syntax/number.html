@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>정수 찾기</title>
+	<style>
+		body {
+			font-size:1.5em;
+			line-height:2;
+			text-align:center;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		let r = Math.floor(Math.random() * 100) + 1;
+    let count = 0;
+    let msg = "1~100 사이의 정수를 입력하세요";
+
+    do {
+      var p = prompt(msg, "");
+      if (p === null)
+        msg = "취소하였습니다."
+      else if (r === p)
+        msg = "축하합니다. `{count}` 만에맞추셨습니다.";
+      else if (r > p)
+        msg = "Up!";
+      else 
+        msg = "Down!";
+      count++;
+    } while ((r != p) && (p !== null));
+    document.write(msg);
+	</script>
+</body>
+</html>
