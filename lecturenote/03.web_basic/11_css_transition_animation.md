@@ -19,8 +19,8 @@
         - 3차원 변경
         - 원래 있던 위치에서 사용자가 있는 쪽으로 얼마나 이동하는지 픽셀 크기로 표현
             
-            ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e9e2ce04-3c8c-4e77-a34f-f06eec9d1660/4b75c320-0754-467f-8c64-648fe9d5bc38/Untitled.png)
-            
+            ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/37134982-0b49-4a0c-8a57-67882cb706ec)
+
 - skew()
     - 요소를 비틀어 왜곡
     - `{ transform: skew(-25deg, -15deg };`
