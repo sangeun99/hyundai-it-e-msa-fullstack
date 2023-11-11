@@ -7,12 +7,12 @@
 
 ### HTML 문서의 기본 구조
 
-- <!DOCTYPE html>: 문서 유형을 지정
-    - <html>: 웹 문서 시작과 끝
-    - <head>: 문서 정보
-        - <meta>: 문서 정보
-        - <title>: 문서 제목
-    - <body>
+- &lt;!DOCTYPE html>: 문서 유형을 지정
+    - &lt;html>: 웹 문서 시작과 끝
+    - &lt;head>: 문서 정보
+        - &lt;meta>: 문서 정보
+        - &lt;title>: 문서 제목
+    - &lt;body>
 
 ### 시맨틱 태그
 
@@ -23,11 +23,11 @@
 
 ### 웹 문서 구조를 위한 시맨틱 태그
 
-- <header>
-- <nav>
-- <main>
-- <article>
-- <section>
-- <aside>
-- <footer>
-- <div>
+- &lt;header>
+- &lt;nav>
+- &lt;main>
+- &lt;article>
+- &lt;section>
+- &lt;aside>
+- &lt;footer>
+- &lt;div>
