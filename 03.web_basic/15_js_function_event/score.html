@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <script>
+    let score = 
+      [
+        ['이름', '국어', '영어', '수학', '철학'],
+        ['신해철', 100, 90, 80, 70],
+        ['유재하', 90, 80, 70, 60],
+        ['서태지', 80, 70, 60, 50]
+      ];
+
+    let count = 0; 
+    let sum = 0;
+    
+    score[0][5] = '총점';
+    score[0][6] = '평균';
+    for (let i = 1; i < score.length; i++) {
+      for (let j = 1; j < 5; j++){
+        count++;
+        sum += score[i][j];
+      }
+      score[i][5] = sum;
+      score[i][6] = sum / count;
+    }
+      
+    document.write('<table>');
+    for (let i = 0; i < score.length; i++) {
+      document.write('<tr>');
+      for (let j = 0; j < score[i].length; j++) {
+        if (i === 0) {
+          document.write('<th>');
+        }
+        else {
+        document.write('<td>');
+        }
+        document.write(score[i][j]);
+        if (i === 0) {
+          document.write('</th>');
+        }
+        else {
+        document.write('</td>');
+        }
+      }
+      document.write('</tr>');
+    }
+    document.write('</table>');
+  </script>
+</body>
+</html>
