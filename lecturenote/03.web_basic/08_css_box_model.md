@@ -4,10 +4,10 @@
 
 - 블록 라벨 요소
     - 혼자 한 줄을 차지하는 요소
-    - <h1>, <div>, <p> 등
+    - &lt;h1>, &lt;div>, &lt;p> 등
 - 인라인 레벨 요소
     - 한 줄을 차지하지 않고 콘텐츠만큼만 영역을 차지하는 요소
-    - <span>, <img>, <strong> 등
+    - &lt;span>, &lt;img>, &lt;strong> 등
 
 ### 박스 모델
 
@@ -29,9 +29,9 @@
     - border-style
     - border-color
     - border-width
-        - <크기> | thin | medium | thick
+        - &lt;크기> | thin | medium | thick
 - border-radius
-    - <크기> | <백분율>
+    - &lt;크기> | &lt;백분율>
     - 너비와 높이를 같게 만든 후 border-radius의 반지름값을 50%으로 지정하면 원이 됨
 
 ### 여백을 조절하는 속성
