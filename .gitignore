@@ -1,6 +1,12 @@
-# java
+# Java
 .settings/
 bin/
 .classpath
 .project
 .metadata
+
+# IntelliJ
+.idea
+
+# VS Code
+settings.json
