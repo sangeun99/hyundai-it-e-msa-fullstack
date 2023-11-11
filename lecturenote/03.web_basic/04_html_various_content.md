@@ -37,7 +37,7 @@
             - &lt;th>
     - &lt;tbody>
         - &lt;tr>
-            - &lt;th>
+            - &lt;td>
 
 ```html
 <table>
