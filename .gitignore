@@ -5,6 +5,12 @@ bin/
 .project
 .metadata
 
+# JSP
+build/
+Servers
+META-INF/
+WEB-INF/
+
 # IntelliJ
 .idea
 
