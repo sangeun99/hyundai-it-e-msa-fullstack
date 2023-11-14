@@ -388,3 +388,7 @@ public class HelloServlet extends HttpServlet {
         ```
         
     - [view.jsp 소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03-1.web_basic_jsp/src/main/webapp/jstl/view.jsp)
+
+### MVC 패턴 실습
+
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/2a799460-2ded-4dbb-aafe-34e85b389d8f)

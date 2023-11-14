@@ -4,14 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Process</title>
 </head>
 <body>
-<h1>Hello Servlet/JSP</h1>
-<%
-	out.println("Hello KKK");
-%>
-<h1>mvc</h1>
-<a href="pilot/form">form</a>
+<h1>${iam}</h1>
 </body>
 </html>
