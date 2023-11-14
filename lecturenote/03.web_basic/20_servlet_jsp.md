@@ -170,3 +170,221 @@ public class HelloServlet extends HttpServlet {
 - JSP 실행 원리
     
     ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/74897d39-9638-4d55-a911-9ecd55dc8655)
+
+### @include 지시문으로 파일 분리하기
+
+- <%@include file=”포함할 파일의 URL”%>
+- 부분마다 file을 include하여 대체할 수 있음
+    
+    ```html
+    <table style="width: 1180px">
+    	<tr>
+    		<td colspan = "2" style="height: 150px; background-color:yellow"><%@ include file="top.jsp" %></td>
+    	</tr>
+    	<tr>
+    		<td style="width: 250px; background-color:red; height: 450px"><%@ include file="menu.jsp" %></td>
+    		<td style="background-color:green;"><%@ include file="content.jsp" %></td>
+    	</tr>
+    </table>
+    ```
+    
+- main.jsp에서 정의한 변수를 분할된 파일에서 사용도 가능함
+    - plugin 폴더 내 실제로 generate 된 java 파일을 확인하면 세 파일이 하나로 합쳐져 컴파일된 것을 확인 가능
+    - `C:\dev\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost\ROOT\org\apache\jsp\include\main_jsp.java`
+
+### JSP 표준 Action
+
+- 자주 사용하는 자바 코드를 표준 태그화
+- XML 문법에 맞추어 작성
+- JSP 표준 Action 종류
+    - jsp:include
+    - jsp:forward
+        - redirect와의 차이점
+            - request 객체 재사용
+            - 상단 URL이 바뀌지 않음
+            - 컨테이너 안에서 forward 해석을 하므로서 forward한 곳의 자원을 이용하여 응답을 만들어 보내게 됨
+    - jsp:param
+    - jsp:useBean
+    - jsp:setProperty
+    - jsp:getProperty
+
+### JSP 표준 Action으로 JSP 파일 분리하기
+
+```html
+<table>
+<tr>
+   <td colspan="2" id="top"><jsp:include page="top.jsp" /></td>
+</tr>
+<tr>
+   <td id="menu"><jsp:include page="main.jsp" /></td>
+   <td id="content"><jsp:include page="content.jsp" /></td>
+</tr>
+</table>
+```
+
+- 완벽한 모듈화 (내부에서 별개로 존재함)
+- 브라우저에 각각 따로 전달됨
+    - 서로 다른 페이지로 존재하기에 main.jsp → top.jsp 변수 사용이 불가능
+    - parameter로 전달 필요 → request, response가 내장되어 top.jsp에서는 내장 객체 사용 가능
+        
+        ```html
+        <!-- main.jsp -->
+        <table>
+        <tr>
+        	<td colspan="2" id="top">
+           		<jsp:include page="top.jsp">
+           			<jsp:param value="<%=msg%>" name="msg" /> 
+           		</jsp:include>
+        	</td>
+        </tr>
+        <tr>
+           <td id="menu"><jsp:include page="menu.jsp" /></td>
+           <td id="content"><jsp:include page="content.jsp" /></td>
+        </tr>
+        </table>
+        ```
+        
+        ```html
+        <!-- top.jsp -->
+        <body>
+        <h1 style="color: white;">top</h1>
+        <%
+        	String msg = request.getParameter("msg");
+        	out.println(msg);
+        %>
+        </body>
+        ```
+        
+- “안녕하세요~” 가 제대로 출력되지 않아 인코딩 설정하기
+    
+    ```html
+    <!-- main.jsp -->
+    <%
+    	request.setCharacterEncoding("UTF-8");
+    	String msg = "안녕하세요~";
+    %>
+    ```
+    
+    ```html
+    <!-- top.jsp -->
+    <%
+    	request.setCharacterEncoding("UTF-8");
+    	String msg = request.getParameter("msg");
+    	out.println(msg);
+    %>
+    ```
+    
+    - 매번 encoding 설정을 하기 번거로우니 필터로 설정할 수 있음
+        
+        ```xml
+        <!-- web.xml -->
+        
+        <filter>
+        	<filter-name>character encoding</filter-name>
+        	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        	<init-param>
+        		<param-name>encoding</param-name>
+        		<param-value>UTF-8</param-value>
+        	</init-param>
+        </filter>
+        <filter-mapping>
+        	<filter-name>character encoding</filter-name>
+        	<url-pattern>/*</url-pattern>
+        </filter-mapping>
+        ```
+        
+
+### 필터 만들기
+
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/4ee2a419-611a-473a-a3a3-643d4d3e175b)
+
+- [util/CharacterEncodingFilter.java 소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03-1.web_basic_jsp/src/main/java/util/CharacterEncodingFilter.java)
+
+```java
+@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		HttpServletRequest hrequest = (HttpServletRequest) request;
+		hrequest.setCharacterEncoding("UTF-8");
+		chain.doFilter(request, response);
+	}
+```
+
+### form문 처리하기
+
+- checkbox, radio의 경우 체크된 항목이 없을 경우 키 값 자체도 넘어오지 않음
+- getParameter(), getParameterValues()로 파라미터 받아오기
+    
+    ```java
+    <%
+    	String name = request.getParameter("name");
+    	String phone = request.getParameter("phone");
+    	String field = request.getParameter("field");
+    	String[] hobbies = request.getParameterValues("hobby");
+    	String motive = request.getParameter("motive");
+    %>
+    ```
+    
+- getParameterMap()로 Key, Value로써 파라미터 받아오기
+- JSP Action을 이용해 파라미터 받아오기
+    - class에 field와 getter, setter를 정의하고 JSP에서 이를 사용하도록 함
+        
+        ```html
+        <%@ page language="java" contentType="text/html; charset=UTF-8"
+            pageEncoding="UTF-8"%>
+        <jsp:useBean id="reserv" class="beans.Reservation" scope="page" />
+        <jsp:setProperty property="*" name="reserv" />
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        <title>예약 확인</title>
+        </head>
+        <body>
+        name : <%= reserv.getName() %> <br/>
+        phone : <%= reserv.getPhone() %> <br/>
+        email : <%= reserv.getEmail() %> <br/>
+        </body>
+        </html>
+        ```
+        
+
+### JSTL 사용하기
+
+- 다운로드
+    - https://tomcat.apache.org/download-taglibs.cgi
+    - *.jar 파일 네 개 다운로드 후 webapp/WEB-INF/lib에 저장하기
+- JSTL
+    - JSP 표준 라이브러리
+    - JSP에서 반복과 조건, 테이터 관리 포맷, XML 조작, 데이터베이스 접근 등을 구현하는 커스텀 태그 라이브러리 모음
+    - EL(Expression Language)을 이용하여 표현
+        - ${ i }
+        - escape문
+            - \${ 10 + 5 }
+- JSTL 라이브러리 선언
+    - `<%@ taglib uri=*"http://java.sun.com/jsp/jstl/core"* prefix=*"c"*%>`
+- 주요 태그
+    - <c:set>
+        - 변수 선언
+        - `<c:set var=*"i"* value=*"10"* />`
+    - <c:out>
+        - 출력
+        - `<c:out value=*"*${ i }*"*/>`
+    - <c:forEach>
+        - `<c:forEach items="${list}" var="mem">`
+        - list 안을 변수 mem으로 접근
+
+### JSP 뷰에서 java 배열 전달받기
+
+- Member class 생성하여 편하게 접근하도록 하기
+    - [Member.java 소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03-1.web_basic_jsp/src/main/java/basic/JstlServlet.java)
+- JstlServlet.java에서 배열 만들어서 인스턴스 생성 후에 배열에 넣어주기.
+    - [JstlServlet.java 소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03-1.web_basic_jsp/src/main/java/basic/JstlServlet.java)
+    - 배열 정보만 jsp 파일에 넘겨주도록 함 (forward 이용해 /JstlServlet 위치에 /jstl/view.jsp 뷰가 보이도록 설정)
+        
+        ```java
+        request.setAttribute("list", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/jstl/view.jsp");
+        dispatcher.forward(request, response);
+        ```
+        
+    - [view.jsp 소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03-1.web_basic_jsp/src/main/webapp/jstl/view.jsp)

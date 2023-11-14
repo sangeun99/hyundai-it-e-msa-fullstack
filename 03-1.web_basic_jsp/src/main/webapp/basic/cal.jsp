@@ -20,6 +20,25 @@ System.out.println(week);
 int endday = c.getActualMaximum(Calendar.DAY_OF_MONTH);
 System.out.println(endday);
 
+// 이전 달 구하기
+int last_month = month - 1;
+int last_month_year = year;
+if (last_month < 0) {
+	last_month = 12;
+	last_month_year--;
+}
+c.set(last_month_year, last_month-1, 1);
+int last_endday = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+
+// 다음 달 구하기
+if (month < 12) {
+	int next_month = month + 1;
+}
+else {
+	int next_year = year + 1;
+	int next_month = 1;
+}
 %>
 
 <table>
