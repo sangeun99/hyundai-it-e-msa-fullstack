@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>03-1.web_basic_jsp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+     
+<!--  
+  <filter>
+  	<filter-name>character encoding</filter-name>
+  	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>character encoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+      -->
+<!--  
+  <servlet>
+  	<servlet-name>helloServlet</servlet-name>
+  	<servlet-class>basic.HelloServlet</servlet-class>
+  	<load-on-startup>10</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/helloServlet</url-pattern>
+  </servlet-mapping>
+  -->
+  <servlet>
+  	<servlet-name>helloServlet2</servlet-name>
+  	<servlet-class>basic.HelloServlet2</servlet-class>
+  	<load-on-startup>-10</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>helloServlet2</servlet-name>
+  	<url-pattern>/helloServlet2</url-pattern>
+  </servlet-mapping>
+</web-app>
