@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-   urlPatterns = {"/pilot/*"},
+   urlPatterns = {"/pilot/*", "/game/*"},
    loadOnStartup = 10)
 public class DispatcherServlet extends HttpServlet {
    
