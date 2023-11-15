@@ -1,7 +1,10 @@
 package mvc.fx;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,38 +13,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pilot.controller.FormController;
-import pilot.controller.ProcessController;
-
 @WebServlet(
    urlPatterns = {"/pilot/*"},
    loadOnStartup = 10)
 public class DispatcherServlet extends HttpServlet {
    
-//   private Map<String, AbstractController> controllerMap = new HashMap<>();
-//   @Override
-//   public void init() throws ServletException {
-//      
-//      Properties prop = new Properties();
-//      
-//      try {
-//         prop.load(new FileInputStream(this.getClass().getResource("dispatcher-servlet.properties").getPath()));
-//         for(Object oKey : prop.keySet()) {
-//            String key = ((String)oKey).trim();
-//            Class<?> className = null;
-//            try {
-//               className = Class.forName(prop.getProperty(key).trim());
-//               controllerMap.put(key, (AbstractController) className.getConstructor().newInstance());
-//               System.out.println("🧡 loaded : " + className + " 🧡");
-//            } catch (Exception e) {
-//               e.printStackTrace();
-//               System.out.println("💔 error : " + className + " 💔");
-//            }
-//         }
-//      } catch (Exception e) {
-//         e.printStackTrace();
-//      }
-//   }
+   private Map<String, AbstractController> controllerMap = new HashMap<>();
+   @Override
+   public void init() throws ServletException {
+      
+      Properties prop = new Properties();
+      
+      try {
+         prop.load(new FileInputStream(this.getClass().getResource("dispatcher-servlet.properties").getPath()));
+         for(Object oKey : prop.keySet()) {
+            String key = ((String)oKey).trim();
+            Class<?> className = null;
+            try {
+               className = Class.forName(prop.getProperty(key).trim());
+               controllerMap.put(key, (AbstractController) className.getConstructor().newInstance());
+               System.out.println("🧡 loaded : " + className + " 🧡");
+            } catch (Exception e) {
+               e.printStackTrace();
+               System.out.println("💔 error : " + className + " 💔");
+            }
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
    
    @Override
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,16 +51,8 @@ public class DispatcherServlet extends HttpServlet {
       System.out.println(contextPath);
       String action = requestURI.substring(contextPath.length());
       
-      AbstractController controller = null;
-      ModelAndView mav = null;
-      if (action.equals("/pilot/form")) {
-    	  controller = new FormController();
-    	  mav = controller.handleRequestInternal(request, response);
-      }
-      else if (action.equals("/pilot/process")) {
-    	  controller = new ProcessController();
-    	  mav = controller.handleRequestInternal(request, response);
-      }
+      AbstractController controller = controllerMap.get(action);
+      ModelAndView mav = controller.handleRequestInternal(request, response);
 
       if (mav != null) {
          
