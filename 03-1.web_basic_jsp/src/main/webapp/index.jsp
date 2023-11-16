@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-<h1>Hello Servlet/JSP</h1>
-<%
-	out.println("Hello KKK");
-%>
-<h1>mvc</h1>
-<a href="pilot/form">form</a>
+<h1>Servlet, JSP 실습</h1>
+<ul>
+	<li><a href="pilot/form">form</a></li>
+	<li><a href="game/ready">game</a></li>
+	<li><a href="article/insert">article</a></li>
+</ul>
 </body>
 </html>

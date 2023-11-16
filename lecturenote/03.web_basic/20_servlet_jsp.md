@@ -392,3 +392,74 @@ public class HelloServlet extends HttpServlet {
 ### MVC 패턴 실습
 
 ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/2a799460-2ded-4dbb-aafe-34e85b389d8f)
+- `http://ip/contextPath/list?pg=10`
+- MVC 컴포넌트의 기능
+    - 컨트롤러
+        - 폼 액션이나 링크 클릭등을 통하여 사용자가 요청하는 액션을 받아들여서 모델과 뷰를 통해서 요청을 처리한 후 응답한다.
+    - 뷰
+        - 모델은 뷰가 렌더링하는데 필요한 데이터이다. 예를 들면 게시판 리스트에 출력하기 위한 게시물 목록이 모델에 해당한다.
+    - 모델
+        - 실제로 유저에게 보여주기위한 화면이며 모델을 이용하여 렌더링을 한다. JSP, XML, JSON, PDF 등으로 웹 페이지를 표현한다.
+
+### Controller, ModelAndView로 역할 분리하기
+
+- Controller
+    - AbstractController 상속 받아서 handleRequestInternal 추상함수 정의하도록 설정
+    - ModelAndView를 리턴
+- ModelAndView
+    - jsp(뷰)에 object를 담아서 보낼 수 있도록 함
+
+### uri마다 인스턴스 지정할 필요 없이 파일로 관리
+
+- `*.properties`에 새로운 뷰와 Java 클래스 매핑하여 저장
+    
+    ```
+    /pilot/form=pilot.controller.FormController
+    /pilot/process=pilot.controller.ProcessController
+    ```
+    
+- `*.properties` 정보를 읽어서 class를 정하고 인스턴스를 생성하도록 함
+
+### 간단한 CRUD 구현하기
+
+- Article 테이블 생성
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/606d97c6-81fc-406c-b31c-284f8d870206)
+    
+- `ojdbc11.jar` 라이브러리로 불러오기
+
+    | ACTION | CLASS | ROLE |
+    | --- | --- | --- |
+    | CREATE |  |  |
+    | /article/insert | article.controller.ArticleInsert | 게시물 입력 폼 출력 |
+    | /article/insertAction | article.controller.ArticleInsertAction | 게시물 생성. 입력 폼에서 전송된 파라미터를 테이블에 저장 |
+    | READ |  |  |
+    | /article/list | article.controller.ArticleList | 게시물 리스트 출력 |
+    | /article/article?no=10 | article.controller.ArticleDetail | 게시물 상세보기 |
+    | UPDATE |  |  |
+    | /article/update?no=10 | article.controller.ArticleUpdate | 게시물 수정 폼 출력 (입력된 게시물 내용 출력) |
+    | /article/updateAction?no=10 | article.controller.ArticleUpdateAction | 게시물 수정. 수정 폼에서 전송된 파라미터로 테이블에 수정 |
+    | DELETE |  |  |
+    | /article/delete?no=10 | article.controller.ArticleDelete | 게시물 삭제 폼 출력 (입력된 게시물 내용 출력) |
+    | /article/deleteAction?no=10 | article.controller.ArticleDeleteAction | 게시물 삭제. 삭제 폼에서 전송된 파라미터로 테이블에 수정 |
+
+### 로그 찍기
+
+- `*.jar` 라이브러리로 가져오기
+
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/e612cf08-1886-425f-b3fc-673d372625cc)
+
+- annotation을 이용해 사용하기
+    - @Log4j
+- `log.info(articleDTO);`
+
+### ArticleService, ArticleDAO, ArticleDTO 사용하여 역할 분리하기
+
+- ArticleService
+    - 관리자가 비즈니스 로직을 수행하며 로그, 메세지를 찍음
+- ArticleDAO
+    - Data Access Object
+    - 데이터에 직접 접근하고 데이터 조작을 실행함
+- ArticleDTO
+    - Data Transfer Object
+    - 계층간 데이터 교환만 실행
