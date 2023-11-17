@@ -224,3 +224,133 @@ end;
         - 여기에 넣은 프로시저 및 함수는 private이 될 것
         - 안쪽에 스펙을 정의해주면 밖에서도 사용할 수 있게 됨
     - 프로시저들을 `create or replace package body pack_books` 안에 넣음
+
+### PL/SQL Datatypes
+
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/5b7489b0-0d1b-4c70-ae7f-496a507af030)
+
+- Scalar Types : number, character, date, boolean
+- Composite Types : plsql record, plsql table, ...
+- Reference Types : ref cursor, ...
+- LOB : http://me2.do/F3hYsYX7
+
+### 변수와 상수
+
+- variable
+- constant
+- parameter
+- argument
+
+### 프로시저 vs 함수
+
+- 함수
+    - 정해진 형태로 만들 때 이용
+    - sql문에 끼워쓸 수 있는 형태로 만들기
+- 프로시저
+    - 이외의 경우에서 이용
+    - sql문에 끼워쓸 수 없다면 프로시저 이용
+    - 프로시저 out 사용 시 select문에 사용할 수 없음
+
+
+### 6가지 유형의 SELECT 문장과 적절한 변수 설정
+
+- [소스코드](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/02.dbms/99_pl_sql_six_types_of_select.sql)
+- [1] 값 하나를 리턴하는 SELECT문 (1, 1)
+    - 값 하나를 담을 타입: `employees.salary%type`
+- [2] 행 하나를 리턴하는 SELECT문 (*, 1)
+    - 행 하나를 넣을 수 있는 타입: `rowtype`
+        - `employees%rowtype`
+        - `rowtype` 에 들은 값들을 각각 리턴할 수도, `rowtype` 자체를 리턴하고 `employee_row.last_name` 같은 식으로 꺼내쓸 수 있음
+- [3] 행 하나의 몇몇 컬럼을 리턴하는 SELECT문(n, 1)
+    - 새로운 type `record`을 프로시저 안에 선언하기
+        
+        ```sql
+        TYPE            employee_record_type IS RECORD (
+            last_name   employees.last_name%type, 
+            salary      employees.salary%type, 
+            job_id      employees.job_id%type
+        );
+        ```
+        
+        - 프로시저 안에서 정의한 타입은 프로시저 안에서만 사용 가능
+        - out 파라미터로 줄 수도 없음
+            - 프로시저 호출 시 타입 정의를 할 수 없기 때문
+    - 뷰를 이용하여 데이터 `rowtype` 으로 선언하기
+        - 특정 컬럼 만을 선택하는 SELECT 질의를 뷰에 저장
+            
+            ```sql
+            create or replace view view_for_rowtype
+            as
+            select  last_name, salary, job_id
+            from    employees;
+            ```
+            
+        - 뷰의 `rowtype`을 사용하기
+            
+            ```sql
+            create or replace procedure p1(
+                p_employee_id   in  employees.employee_id%type,
+                employee_row    out view_for_rowtype%rowtype
+            )
+            ```
+            
+    - 패키지 안에 레코드 변수를 선언하여 사용하기(!)
+        
+        ```sql
+        create or replace package pack_datatypes
+        is
+            TYPE employee_record_type IS RECORD (
+                last_name   employees.last_name%type, 
+                salary      employees.salary%type, 
+                job_id      employees.job_id%type
+            );
+        end;
+        /
+        ```
+        
+        - 제일 좋은 방법
+        - 밖에서도 안에서도 해당 타입을 사용할 수 있음
+- [4] 같은 유형의 값 여러 개를 리턴하는 SELECT문 (1, m)
+    - 프로시저 안에 타입 정의하고 이용하기
+        
+        ```sql
+        TYPE        employees_salary_tab_type IS TABLE OF employees.salary%type INDEX BY pls_integer;
+        ```
+        
+        - `BULK COLLECT INTO`
+            - 값 여러 개에 대한 요청을 한 번에 받을 수 있는 예약어
+        - 값에 접근하기
+            
+            ```sql
+            for i in emp_sal_tab.first .. emp_sal_tab.last loop        
+                    dbms_output.put_line(emp_sal_tab(i));
+                end loop;
+            ```
+            
+            - PL/SQL의 인덱스는 1부터 시작함
+            - COLLECTIONS의 메서드
+                - first
+                    - 첫 번째 인덱스를 리턴
+                - last
+                    - 마지막 인덱스를 리턴
+- [5] 행 여러 개를 리턴하는 SELECT문 (*, m)
+    
+    ```sql
+    TYPE    employees_table_type IS TABLE OF employees%rowtype INDEX BY pls_integer;
+    ```
+    
+- [6] 몇몇 컬럼을 포함하는 행 여러 개를 리턴하는 SELECT문 (n, m)
+    - RECORD 타입과 그들을 담는 TABLE 타입 필요함
+        
+        ```sql
+        TYPE            employee_record_type IS RECORD (
+            last_name   employees.last_name%type, 
+            salary      employees.salary%type, 
+            job_id      employees.job_id%type
+        );
+        TYPE employees_table_type IS TABLE OF employee_record_type
+            INDEX BY pls_integer;
+        employees_tab employees_table_type;
+        ```
+        
+- https://refactoring.guru/
