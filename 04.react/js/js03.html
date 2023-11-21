@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var name = '가';
+    let name1 = 'a';
+
+    console.log(name, name1);
+    console.log(this.name, this.name1);
+    console.log(window.name, window.name1);
+    
+    function test() {
+      var name = '나';
+      console.log(name, this.name);
+    }
+    test();
+    window.test();
+
+    let obj = {
+      name: '다',
+      test: function() {
+        console.log(name); // 전역객체
+        console.log(this.name); // this는 obj를 의미함
+        console.log(window.name); // 전역객체
+      }.bind(this) // this가 window를 가리키게 하고 싶다면?
+    }
+    obj.test();
+  </script>
+</body>
+</html>

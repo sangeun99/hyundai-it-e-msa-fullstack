@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수 실습</title>
+</head>
+<body>
+  <script>
+    function add(a, b) {
+      return a + b;
+    }
+    console.log(add(2, 3));
+
+    function add3() {
+      var c = 0;
+      for (i = 0, cnt = arguments.length; i < cnt; i++) {
+        c += Number(arguments[i]);
+      }
+      return c;
+    }
+    console.log(add3(10));
+    console.log(add3(10, 20, 30));
+    console.log(add3(10, 20, 30, 40, 50));
+
+    function add4(...a) {
+      var c = 0;
+      for (i = 0, cnt = a.length; i < cnt; i++) {
+        c += Number(a[i]);
+      }
+      return c;
+    }
+    console.log(add4(10));
+    console.log(add4(10, 20, 30));
+    console.log(add4(10, 20, 30, 40, 50));
+
+    function add5(...a) {
+      var c = 0;
+      a.forEach((x) => c += x);
+      return c;
+    }
+    console.log(add5(10));
+    console.log(add5(10, 20, 30));
+    console.log(add5(10, 20, 30, 40, 50));
+
+    function add6(a, b, ...f) {
+      var c = 0;
+      f.forEach((g) => c += g(a, b));
+      return c;
+    }
+    console.log(add6(1, 2, (a, b) => a + b, (a, b) => a - b));
+  </script>
+</body>
+</html>

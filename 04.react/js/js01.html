@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css 선택자와 js 함수</title>
+  <style>
+    h1 {
+      font-size: 50px;
+      font-family: '궁서';
+      color: blueviolet;
+    }
+
+    .title {
+      font-size: 60px;
+      color: blue;
+    }
+
+    #title {
+      font-size: 30px;
+      color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>HTML basic</h1>
+  <h1 class="title">HTML basic</h1>
+  <h1 id="title">HTML basic</h1>
+  <h1>HTML basic</h1>
+  <h1 class="title">HTML basic</h1>
+  <h1>HTML basic</h1>
+  <button type="button" onclick="changeContent()">내용 바꾸기</button>
+
+  <script>
+    function changeContent() {
+      document.getElementById("title").innerText = "html 기본";
+    }
+  </script>
+</body>
+
+</html>

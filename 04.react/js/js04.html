@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Pattern</title>
+</head>
+<body>
+  <script>
+    var cnt = 0;
+    function count() {
+      return ++cnt;
+    }
+
+    // cnt = 100; // side effect
+    console.log(count());
+    console.log(count());
+    console.log(count());
+
+    // 클로저 (closure) d.p
+    function count2() {
+      var count = 0;
+      return function() {
+        return ++count;
+      }
+    }
+
+    let cl = count2();
+    console.log(cl());
+    console.log(cl());
+    console.log(cl());
+    console.log(cl());
+
+    let cl2 = count2();
+    console.log(cl2());
+    console.log(cl2());
+
+    // 커링 (currying) d.p
+    function add(x, y) {
+      return x + y;
+    }
+
+    function add2(x) {
+      return function(y) {
+        return x + y;
+      }
+    }
+
+    console.log(add(1, 2));
+    console.log(add2(1)(2));
+
+    function curry(fn) {
+      return function(x) {
+        return x.map(fn);
+      }
+    }
+    console.log(curry((x) => x * x)([1, 2, 3, 4, 5]));
+
+    console.log("===");
+
+    // 메모이제이션 (memoization) d.p
+    let cnt1 = 0;
+    function fib(n) {
+      cnt1++;
+      if (n < 2) return n;
+      return fib(n - 2) + fib(n - 1);
+    }
+    let r = fib(5);
+    console.log(cnt1, r);
+
+    let result = [];
+    cnt1 = 0;
+    function fib2(n) {
+      cnt1++;
+      if (n < 2) return result[n] = n;
+      if (result[n] == undefined) {
+        result[n] = fib2(n-1) + fib2(n-2);
+      }
+      return result[n];
+    }
+    r = fib2(5);
+    console.log(cnt1, r, result);    
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 실습</title>
+  <style>
+    /* 기본 선택자 */
+    .class { background-color: silver; }
+    #fruit { background-color: transparent; }
+
+    /* 복합 선택자 */
+    ul li { color: blue; } /* 자손 */
+    ul > li { background-color: pink; } /* 자식 */
+    li#기준 ~ li { color: plum; } /* 바로 뒤의 형제들 */
+    li#기준 + li { color: green; } /* 바로 뒤의 형제 */
+
+    /* 속성 선택자 */
+    li[title] { color: orange; } /* 속성 존재 여부 */
+    li[title="할인"] { color: red; } /* 속성 값이 같다면 */
+    li[title~="무료배송"]::after { content: " [무료배송]";} /* 공백 기준으로 포함된다면 */
+    li[title$="품절"] { color: grey; } /* 속성 값이 끝난다면 */
+    li[title^="hot"] { color: red; font-weight: bold;} /* 시작된다면 */
+    li[title*="무료"] { text-decoration: underline; } /* 포함된다면 */
+
+    li[title~="할인"]li[title~="무료배송"] { color: black; } /* and */
+    li[title~="할인"], li[title~="무료배송"] { color: black; } /* or */
+
+    /* 가상 선택자 */
+    #fruit > ol > li:nth-child(2n) { background-color: lime; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <ul>
+    <li>요소 1</li>
+    <li class="class01">요소 2</li>
+    <li class="class01" id="기준">요소 3</li>
+    <li>요소 4</li>
+    <li id="fruit">요소 5
+      <ol>
+        <li title="">사과</li>
+        <li title="할인">배</li>
+        <li title="할인 무료배송">바나나</li>
+        <li title="무료배송 품절">수박</li>
+        <li title="hot 무료배송">복숭아</li>
+        <li><a href="#" target="_blank" data-url="">딸기</a></li>
+        <li title="품절">귤</li>
+      </ol>
+    </li>
+    <li>요소 6</li>
+  </ul>
+  <h1>Header</h1>
+  <script>
+    $('li[title$="품절"]').on('click', function() {
+      alert("품절입니다");
+    });
+
+    document.querySelector('li[title$="품절"]').addEventListener('click', function() {      
+      alert("품절입니다");
+    })
+
+    $('h1').on('click', function() {
+      $('body').append('<h1>Header</h1>');
+    })
+
+    document.querySelector('h1').addEventListener('click', function() {
+      document.querySelector('body').appendChild(document.createElement('h1')).textContent='Header';
+    });
+    </script>
+</body>
+</html>
