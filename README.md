@@ -13,4 +13,16 @@
 | 3  | Java 기반 Web 기초<br/><img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"> | 11.06 - 11.10 |[📚 Do it! HTML+CSS+자바스크립트 웹 표준의 정석](https://product.kyobobook.co.kr/detail/S000001818002) |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/03.web_basic) |[CODE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03.web_basic)|
 |    | <img src="https://img.shields.io/badge/JSP-007396?style=flat-square&logo=java&logoColor=white"> | 11.13 - 11.15 | 📚 자체교재 |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/03.web_basic/20_servlet_jsp.md) | [CODE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/03.web_basic_jsp)|
 | 4  | React<br/><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> | 11.20 - 11.24 | [📚 생활코딩! React 리액트 프로그래밍](https://product.kyobobook.co.kr/detail/S000200940449) |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/04.react) | [CODE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/04.react)|
-| 5  | Spring 프레임워크 프로그래밍<br/><img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=spring&logoColor=white"/> | 11.27 -  | [📚 코드로 배우는 스프링 웹 프로젝트](https://product.kyobobook.co.kr/detail/S000001923741) |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/05.spring) | [CODE](https://github.com/sangeun99/hyundai-it-e-spring) |
+| 5  | Spring 프레임워크 프로그래밍<br/><img src="https://img.shields.io/badge/Spring-6DB33F?style=flat-square&logo=spring&logoColor=white"/> | 11.27 - 12.06 | [📚 코드로 배우는 스프링 웹 프로젝트](https://product.kyobobook.co.kr/detail/S000001923741) |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/05.spring) | [CODE](https://github.com/sangeun99/hyundai-it-e-spring) |
+| 6  | Spring BOOT<br/><img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> | 12.06 - 12.08 | [📚 스프링 부트 3 백엔드 개발자 되기: 자바 편](https://product.kyobobook.co.kr/detail/S000201766024) | | |
+| 7  | 클라우드<br/><img src="https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"> | 12.18 -  | [📚 AWS로 시작하는 인프라 구축의 정석](https://product.kyobobook.co.kr/detail/S000061353999) | | |
+
+## 👾 스터디
+
+- 코딩테스트 스터디 [REPO](https://github.com/kyukong/SeSAC-Algo)
+
+## 💻 프로젝트
+
+### 1차 프로젝트🎅
+
+- 디어산타 [REPO](https://github.com/dear-santa)
