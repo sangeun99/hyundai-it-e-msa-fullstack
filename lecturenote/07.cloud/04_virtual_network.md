@@ -221,3 +221,59 @@
     - 리소스(EC2, 로드 밸런서, RDS 등)에 대해 설정 가능
 - 네트워크 ACL
     - 네트워크에 대한 설정. 해당 서브넷에 포함되는 리소스 모두에 적용
+
+## (추가) NAT 게이트웨이 대용 NAT 인스턴스 생성
+
+### NAT 인스턴스용 보안그룹 생성
+
+- **sample-sg-nat-instance01**
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/87558cfe-17b4-41cd-b420-691ee2f3d997)
+    
+- NAT 인스턴스는 퍼블릭 서브넷에 하나씩 존재
+- sample-vpc 이용
+- 인바운드 규칙
+    - 80, 443번 포트는 프라이빗 서브넷에서 받는 요청을 받기 위해 허용
+    - 22번 포트는 외부에서 들어오는 것을 허용
+    - 퍼블릭 서브넷 안에 있기 때문에 퍼블릭 서브넷의 주소도 지정
+    - 두 번째 보안그룹은 HTTP/HTTPS 규칙에 한해 10.0.80.0/20으로 설정해줌
+- 아웃바운드 규칙
+    - 인터넷으로 나가는 80, 443 포트를 열어줌
+        
+        ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/799a0427-5c07-4cfd-b4e0-0d54f1400946)
+
+### NAT 인스턴스 생성
+
+- **sample-ec2-nat-instance01**
+- NAT가 설치된 AMI 검색
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/7abf61b3-c8ab-410b-841b-6fc8ba9de4b4)
+    
+- 네트워크 설정
+    - 퍼블릭 서브넷에 NAT 인스턴스 설정
+    - 퍼블릭 IP 자동 할당 활성화
+    - 만든 보안그룹 지정
+        
+        ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/074a965f-5b38-47e8-b11b-f5d89816c7c7)
+        
+- [작업] → [네트워킹] → [소스/대상 확인 변경] → [중지] 체크
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/6cd7012e-d07c-42c1-892c-1e22e8074a3c)
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/928520e0-619c-4705-8db0-10673b6fb896)
+    
+
+### 라우팅 테이블 수정
+
+- 0.0.0.0/0 대역을 nat-instance로 향하게 설정
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/b980f4c4-6f33-4e0e-9747-2e015b1d22e5)
+    
+
+### 작동 확인
+
+- `curl http://www.naver.com`
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/f7b7c2f4-15aa-4d1e-b8b6-21671e1fa287)
+    
+- **sample-sg-nat-instance02, sample-ec2-nat-instance02**도 같은 방식으로 설정
