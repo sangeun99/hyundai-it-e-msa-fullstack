@@ -179,7 +179,22 @@
         
         ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/f358fe17-3863-449f-870b-aa390591d5c1)
         
-- 가비아에서 DNS 설정
+- Route53에서 MX 레코드설정
     
-    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/8be4903e-c86b-4ba3-b985-b5b98f415c8a)
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/c83f96d8-5e8a-4bf6-816b-c4e879766a71)
     
+- 이메일 수신 시 S3 버킷에 파일 추가
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/197cb939-dc06-4d3b-a7c4-588efb621118)
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/e1dafd95-98c1-40c7-a1b9-bcf05dfd16cc)
+    
+
+### 샌드박스 외부로 이동
+
+- 메일 서버를 샌드박스 바깥으로 이동시키면 다양한 제한 해제 가능
+- 외부 이동 요청
+    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/6cbde235-54a2-451e-a109-d8fce4ed2f69)
+    
+    - 담당자 검토 후 승인 
