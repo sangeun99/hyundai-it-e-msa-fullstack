@@ -173,3 +173,48 @@
     - `ssh-copy-id hd08-03`
 - 세 머신에서 모두 같은 작업을 해준다
 - 이후에는 인증 없이 접속 가능
+
+## VirtualBox 대신 minikube로 재설정
+
+### 미니큐브 참고자료
+
+- https://velog.io/@gentledev10/install-minikube
+- https://peterica.tistory.com/371
+
+### 미니큐브 설치
+
+- 도커 활성화
+    - 도커 데스크탑 열기
+- 프로그램 설치
+    - https://minikube.sigs.k8s.io/docs/start/
+    - 리눅스 명령어
+        
+        ```bash
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
+        ```
+        
+
+### 클러스터 시작하기
+
+```bash
+minikube start
+```
+
+![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/21e182aa-db8e-42c6-a014-5cd37e8b47b0)
+
+### 다중노드 시작하기
+
+- minikube 시작
+    - `minikube start --driver docker`
+- ingress 설치
+    - `minikube addons enable ingress`
+- 클러스터 노드 확인
+    - `minikube node list`
+- work 노드 생성
+    - `minikube node add --worker`
+- role 추가 및 확인
+    - `kubectl label node minikube-m02 mode-role.kubernetes.io/worker=worker`
+    - `kubectl get nodes -o wide`
+- work 노드 ssh 접속하기
+    - `minikube ssh -n minikube-m02`
