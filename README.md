@@ -18,14 +18,23 @@
 | 7  | 클라우드<br/><img src="https://img.shields.io/badge/Amazon%20AWS-232F3E?style=flat-square&logo=amazon aws&logoColor=white"> | 12.18 - 12.26 | [📚 AWS로 시작하는 인프라 구축의 정석](https://product.kyobobook.co.kr/detail/S000061353999) |[NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/07.cloud) | |
 |    | <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> | 12.26 - 12.28 | [📚 그림과 실습으로 배우는 도커 & 쿠버네티스](https://product.kyobobook.co.kr/detail/S000001766500) | [NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/07.docker)| |
 |    | <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white"/> | 12.29 - 01.09 | [📚 24단계 실습으로 정복하는 쿠버네티스](https://product.kyobobook.co.kr/detail/S000200152893) | [NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/07.kubernetes)| |
-| 8  | <img src="https://img.shields.io/badge/Android-34A853?style=flat-square&logo=android&logoColor=white"/> | 01.10 -  | [📚 Joyce의 안드로이드 앱 프로그래밍 with 코틀린](https://product.kyobobook.co.kr/detail/S000001953765) | [NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/08.android)| [CODE](https://github.com/sangeun99/hyundai-it-e-android)|
+| 8  | 안드로이드<br/><img src="https://img.shields.io/badge/Android-34A853?style=flat-square&logo=android&logoColor=white"/> | 01.10 - 01.18 | [📚 Joyce의 안드로이드 앱 프로그래밍 with 코틀린](https://product.kyobobook.co.kr/detail/S000001953765) | [NOTE](https://github.com/sangeun99/hyundai-it-e-java-fullstack/tree/master/lecturenote/08.android)| [CODE](https://github.com/sangeun99/hyundai-it-e-android)|
 
 ## 👾 스터디
 
 - 코딩테스트 스터디 [REPO](https://github.com/kyukong/SeSAC-Algo)
+- Vue.js 스터디 [REPO](https://github.com/hyundai-fruitfruit/study/tree/sangeun/%EC%97%84%EC%83%81%EC%9D%80)
 
 ## 💻 프로젝트
 
 ### 1차 프로젝트🎅
 
 - 디어산타 [REPO](https://github.com/dear-santa)
+
+### 2차 프로젝트🐰
+
+- 위시버니 [REPO](https://github.com/WishBunny)
+
+### 3차 프로젝트🌿
+
+- 푸릇푸릇 [REPO](https://github.com/hyundai-fruitfruit)
