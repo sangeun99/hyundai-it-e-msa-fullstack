@@ -51,12 +51,11 @@
     
 - 생성한 타겟 그룹 선택
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/e9e2ce04-3c8c-4e77-a34f-f06eec9d1660/64e20f67-27c1-4972-91ab-53412897107d/Untitled.png)
-    
+    ![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/fa183555-e082-47fa-a002-e61ff05bd5f9)
 
 ### 작동 확인하기
 
-![image](https://github.com/sangeun99/hyundai-it-e-java-fullstack/assets/63828057/fa183555-e082-47fa-a002-e61ff05bd5f9)
+![image](https://github.com/sangeun99/hyundai-it-e-msa-fullstack/assets/63828057/1b399bd1-c71e-421f-9cd6-fdf10245032c)
 
 - web01 접속
 - vi를 이용해 index.html 수정하기
